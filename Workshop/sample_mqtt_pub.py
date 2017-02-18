@@ -15,7 +15,7 @@ def setup_mqtt_publisher():
     mqtt_publisher.connect()
 
 def publish_temp(pTemp):
-    publish_time = "00:00:00"
+    publish_time = time.localtime()
     #publish_time = time.localtime()
     output_str = "{Time: %s, Station: %d, Sensor: %s, Temp: %d}" % (publish_time, STATION_NO, SENSOR_ID, pTemp)
     mqtt_publisher.publish(b"sensors/1/temperature", output_str.encode('ascii'))
